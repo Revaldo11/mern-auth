@@ -1,9 +1,9 @@
 const express = require('express');
-const morgan = require('morgan');
+const morgan = require('morgan'); // logging
 const mongoose = require('mongoose');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+const cors = require('cors'); // cross origin resource sharing
+const bodyParser = require('body-parser'); // parse incoming request bodies in a middleware before your handlers
+require('dotenv').config(); // load environment variables from a .env file into process.env
 const app = express();
 const authRoutes = require('./routes/auth');
 
