@@ -3,8 +3,24 @@ const morgan = require('morgan'); // logging
 const mongoose = require('mongoose');
 const cors = require('cors'); // cross origin resource sharing
 const bodyParser = require('body-parser'); // parse incoming request bodies in a middleware before your handlers
-require('dotenv').config(); // load environment variables from a .env file into process.env
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
+// connect to database
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB Connected');
+    } catch (err) {
+        console.error(err.message);
+        process.exit(1);
+    }
+};
+connectDB();
+
 const authRoutes = require('./routes/auth');
 
 // app middlewares
