@@ -6,6 +6,7 @@ const bodyParser = require('body-parser'); // parse incoming request bodies in a
 const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
+
 // connect to database
 const connectDB = async () => {
     try {
